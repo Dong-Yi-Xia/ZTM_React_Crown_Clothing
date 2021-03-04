@@ -10,6 +10,11 @@
     margin: 0 7.5px 15px;
     background-position: center;
     background-size: cover;
+
+    // className of menu-item and large
+    &.large{
+      height: 380px
+    }
   
     // same as .menu-item:first-child
     &:first-child {
