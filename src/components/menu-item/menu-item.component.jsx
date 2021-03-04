@@ -18,6 +18,6 @@ const MenuItem = ( {title, imageUrl, size, history, linkUrl, match} ) => {
     )
 }
 
-// By wrapping the component in withRouter, super charge it the component, 
+// By wrapping the component in withRouter, it super charge the component, 
 // give it access to the props of location, history, match 
 export default withRouter(MenuItem)

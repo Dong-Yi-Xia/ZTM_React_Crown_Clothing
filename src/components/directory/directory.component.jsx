@@ -3,7 +3,7 @@ import MenuItem from '../menu-item/menu-item.component'
 
 import './directory.styles.scss'
 
-import sections from '../../directory.data'
+import sections from '../../json-data/directory.data'
 
 class Directory extends React.Component {
     constructor(){
