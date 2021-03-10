@@ -9,7 +9,7 @@ import SignInAndSignUpPage from './pages/sign-in-and-sign-up/sign-in-and-sign-up
 
 import Header from './components/header/header.component'
 
-import { auth } from './firebase/firebase.utils'
+import { auth, createUserProfileDocument } from './firebase/firebase.utils'
 
 class App extends React.Component {
   constructor(){
@@ -24,11 +24,14 @@ class App extends React.Component {
 
   componentDidMount(){
     //a firebase auth method, onAuthStateChanged method, open subscription 
-    this.unsubscribeFromAuth = auth.onAuthStateChanged(user => {
-      this.setState({
-        currentUser: user
-      })
-      console.log(user)
+    // async request, the user has a uid property
+    this.unsubscribeFromAuth = auth.onAuthStateChanged(async user => {
+      createUserProfileDocument(user)
+      // this.setState({
+      //   currentUser: user
+      // })
+      // see the user info object from firebase 
+      // console.log(user)
     })
   }
 
