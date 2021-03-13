@@ -25,13 +25,25 @@ class App extends React.Component {
   componentDidMount(){
     //a firebase auth method, onAuthStateChanged method, open subscription 
     // async request, the user has a uid property
-    this.unsubscribeFromAuth = auth.onAuthStateChanged(async user => {
-      createUserProfileDocument(user)
-      // this.setState({
-      //   currentUser: user
-      // })
-      // see the user info object from firebase 
-      // console.log(user)
+    this.unsubscribeFromAuth = auth.onAuthStateChanged(async userAuth => {
+        if(userAuth){
+          const userRef = await createUserProfileDocument(userAuth)
+          //firestore method onSnapshot, using the .data() method will give by the object properties  
+          userRef.onSnapshot(snapShot => {
+            this.setState({
+              currentUser: {
+                id: snapShot.id,
+                ...snapShot.data()
+              }
+            })
+            console.log(this.state)
+          }) 
+        }else{
+          //when the user log out. set currentUser back to null
+          this.setState({
+            currentUser: userAuth
+          })
+        }
     })
   }
 

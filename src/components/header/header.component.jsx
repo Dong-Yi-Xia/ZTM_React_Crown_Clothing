@@ -1,5 +1,5 @@
 import React from 'react'
-import './header.style.scss'
+import './header.styles.scss'
 import { Link } from 'react-router-dom'
 
 // Special syntax in React for importing SVG
